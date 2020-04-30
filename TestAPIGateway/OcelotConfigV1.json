@@ -1,0 +1,40 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/movie",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/movie",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "movies",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "55155"
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/user",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "users",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "55152"
+        }
+      ]
+    }
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "movies",
+        "users"
+      ],
+      "UpstreamPathTemplate": "/"
+    }
+  ],
+  "GlobalConfiguration": {}
+}
